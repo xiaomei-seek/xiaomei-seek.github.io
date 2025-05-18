@@ -8,9 +8,44 @@
       </div>
       
       <CodeEditor>
-        <div v-for="(line, index) in codeLines" :key="index" class="code-line">
-          <span class="line-number">{{ index + 1 }}</span>
-          <span v-html="line"></span>
+        <div class="code-line">
+          <span class="line-number">1</span>
+          <span class="token-keyword">const</span> developer <span class="token-operator">=</span> {
+        </div>
+        <div class="code-line">
+          <span class="line-number">2</span>
+          <span>&nbsp;&nbsp;name:</span> <span class="token-string">"梅友飞"</span>,
+        </div>
+        <div class="code-line">
+          <span class="line-number">3</span>
+          <span>&nbsp;&nbsp;role:</span> <span class="token-string">"前端开发工程师"</span>,
+        </div>
+        <div class="code-line">
+          <span class="line-number">4</span>
+          <span>&nbsp;&nbsp;experience:</span> <span class="token-string">"2年"</span>,
+        </div>
+        <div class="code-line">
+          <span class="line-number">5</span>
+          <span>&nbsp;&nbsp;skills:</span> [<span class="token-string">"Vue"</span>, <span
+            class="token-string">"Next.js"</span>, <span class="token-string">"TypeScript"</span>, <span
+            class="token-string">"Node.js"</span>],
+        </div>
+        <div class="code-line">
+          <span class="line-number">6</span>
+          <span>&nbsp;&nbsp;learning:</span> <span class="token-string">"AI开发与应用"</span>,
+        </div>
+        <div class="code-line">
+          <span class="line-number">7</span>
+          <span>&nbsp;&nbsp;passion:</span> <span class="token-function">() =></span> <span
+            class="token-string">"创造优秀的用户体验"</span><span class="typing-animation"></span>
+        </div>
+        <div class="code-line">
+          <span class="line-number">8</span>
+          };
+        </div>
+        <div class="code-line">
+          <span class="line-number">9</span>
+          <span class="token-comment">// 我的代码，我的世界</span>
         </div>
       </CodeEditor>
     </div>
@@ -32,18 +67,6 @@ defineProps({
     default: 'home'
   }
 });
-
-const codeLines = [
-  `<span class="token-keyword">const</span> developer <span class="token-operator">=</span> {`,
-  `<span>&nbsp;&nbsp;name:</span> <span class="token-string">"梅友飞"</span>,`,
-  `<span>&nbsp;&nbsp;role:</span> <span class="token-string">"前端开发工程师"</span>,`,
-  `<span>&nbsp;&nbsp;experience:</span> <span class="token-string">"2年"</span>,`,
-  `<span>&nbsp;&nbsp;skills:</span> [<span class="token-string">"Vue"</span>, <span class="token-string">"Next.js"</span>, <span class="token-string">"TypeScript"</span>, <span class="token-string">"Node.js"</span>],`,
-  `<span>&nbsp;&nbsp;learning:</span> <span class="token-string">"AI开发与应用"</span>,`,
-  `<span>&nbsp;&nbsp;passion:</span> <span class="token-function">() =></span> <span class="token-string">"创造优秀的用户体验"</span><span class="typing-animation"></span>`,
-  `};`,
-  `<span class="token-comment">// 我的代码，我的世界</span>`
-];
 </script>
 
 <style scoped>
@@ -63,7 +86,7 @@ const codeLines = [
   left: -10%;
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+  background: radial-gradient(circle, #2563eb 0%, transparent 70%);
   opacity: 0.1;
   border-radius: 50%;
   z-index: -1;
@@ -76,7 +99,7 @@ const codeLines = [
   right: -10%;
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle, var(--secondary) 0%, transparent 70%);
+  background: radial-gradient(circle, #8b5cf6 0%, transparent 70%);
   opacity: 0.1;
   border-radius: 50%;
   z-index: -1;
@@ -90,7 +113,7 @@ const codeLines = [
   font-size: 4rem;
   margin-bottom: 20px;
   line-height: 1.2;
-  background: linear-gradient(to right, var(--primary), var(--secondary));
+  background: linear-gradient(to right, #2563eb, #8b5cf6);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: fadeInUp 1s ease;
@@ -99,17 +122,17 @@ const codeLines = [
 .hero p {
   font-size: 1.2rem;
   margin-bottom: 30px;
-  color: var(--gray);
+  color: #64748b;
   animation: fadeInUp 1s 0.2s ease both;
 }
 
 .btn {
   display: inline-block;
   padding: 12px 30px;
-  background: linear-gradient(to right, var(--primary), var(--secondary));
-  color: var(--light);
+  background: linear-gradient(to right, #2563eb, #8b5cf6);
+  color: #f8fafc;
   border: none;
-  border-radius: var(--border-radius);
+  border-radius: 8px;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
@@ -128,7 +151,7 @@ const codeLines = [
   bottom: 30px;
   left: 50%;
   transform: translateX(-50%);
-  color: var(--gray);
+  color: #64748b;
   font-size: 14px;
   text-align: center;
   animation: bounce 2s infinite;
@@ -138,52 +161,6 @@ const codeLines = [
   display: block;
   font-size: 24px;
   margin-top: 5px;
-}
-
-.code-line {
-  display: flex;
-  margin-bottom: 5px;
-}
-
-.line-number {
-  color: #6272a4;
-  width: 20px;
-  text-align: right;
-  margin-right: 10px;
-}
-
-.token-keyword {
-  color: #ff79c6;
-}
-
-.token-operator {
-  color: #ff79c6;
-}
-
-.token-string {
-  color: #f1fa8c;
-}
-
-.token-function {
-  color: #8be9fd;
-}
-
-.token-comment {
-  color: #6272a4;
-}
-
-.typing-animation {
-  border-right: 2px solid #f8f8f2;
-  animation: blink 1s step-end infinite;
-}
-
-@keyframes blink {
-  from, to {
-    border-color: transparent;
-  }
-  50% {
-    border-color: #f8f8f2;
-  }
 }
 
 @media (max-width: 768px) {

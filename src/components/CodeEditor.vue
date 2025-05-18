@@ -29,10 +29,10 @@ const props = defineProps({
   right: -30px;
   width: 350px;
   height: 350px;
-  background-color: var(--darker);
+  background-color: #282a36;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: var(--box-shadow);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   transform: rotate(8deg);
   z-index: -1;
   opacity: 0.7;
@@ -40,7 +40,7 @@ const props = defineProps({
 
 .code-editor-header {
   height: 30px;
-  background-color: var(--dark);
+  background-color: #1e1f29;
   display: flex;
   align-items: center;
   padding: 0 10px;
@@ -80,10 +80,10 @@ const props = defineProps({
   right: 0;
   width: 100%;
   height: 100%;
-  background-color: var(--dark);
-  border-radius: var(--border-radius);
+  background-color: #282a36;
+  border-radius: 8px;
   overflow: hidden;
-  box-shadow: var(--box-shadow);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   transform: none;
   opacity: 1;
   z-index: 1;
@@ -92,6 +92,57 @@ const props = defineProps({
 @media (max-width: 768px) {
   .code-editor {
     display: none;
+  }
+}
+
+/* 代码高亮样式 - 将在全局生效 */
+</style>
+
+<style>
+/* 非scoped样式，以便这些类可以在其他组件中使用 */
+.code-line {
+  display: flex;
+  margin-bottom: 5px;
+}
+
+.line-number {
+  color: #6272a4;
+  width: 20px;
+  text-align: right;
+  margin-right: 10px;
+}
+
+.token-keyword {
+  color: #ff79c6;
+}
+
+.token-operator {
+  color: #ff79c6;
+}
+
+.token-string {
+  color: #f1fa8c;
+}
+
+.token-function {
+  color: #8be9fd;
+}
+
+.token-comment {
+  color: #6272a4;
+}
+
+.typing-animation {
+  border-right: 2px solid #f8f8f2;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  from, to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #f8f8f2;
   }
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="project-card fade-in">
+  <div class="project-card fade-in" @click="viewProject">
     <div class="project-header">
       <h3 class="project-title">{{ project.title }}</h3>
       <div class="project-subtitle">{{ project.subtitle }}</div>
@@ -8,6 +8,16 @@
       <div class="project-description">
         <p>{{ project.description }}</p>
       </div>
+      
+      <!-- 图片预览指示器，只有当有图片时才显示 -->
+      <div v-if="project.images && project.images.length > 0" class="image-preview">
+        <img :src="project.images[0]" :alt="`${project.title} 预览图`">
+        <div class="image-preview-overlay">
+          <i class="fas fa-images"></i>
+          <span>{{ project.images.length }}张图片</span>
+        </div>
+      </div>
+      
       <div class="project-tech">
         <h4>技术栈</h4>
         <div class="tech-stack">
@@ -19,12 +29,21 @@
 </template>
 
 <script setup>
-defineProps({
+const props = defineProps({
   project: {
     type: Object,
     required: true
   }
 });
+
+const emit = defineEmits(['view-project']);
+
+function viewProject() {
+  // 仅当项目有图片时才触发查看事件
+  if (props.project.images && props.project.images.length > 0) {
+    emit('view-project', props.project);
+  }
+}
 </script>
 
 <style scoped>
@@ -37,6 +56,7 @@ defineProps({
   height: 100%;
   display: flex;
   flex-direction: column;
+  cursor: pointer;
 }
 
 .project-card:hover {
@@ -92,5 +112,43 @@ defineProps({
   border-radius: 20px;
   font-size: 0.75rem;
   color: var(--primary);
+}
+
+/* 图片预览样式 */
+.image-preview {
+  position: relative;
+  margin: 15px 0;
+  height: 160px;
+  overflow: hidden;
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.image-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.image-preview-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  padding: 15px;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.image-preview-overlay i {
+  color: var(--primary);
+}
+
+.project-card:hover .image-preview img {
+  transform: scale(1.05);
 }
 </style>

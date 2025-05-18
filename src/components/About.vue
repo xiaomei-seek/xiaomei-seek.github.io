@@ -2,9 +2,38 @@
   <div class="about-content">
     <div class="about-code-display fade-in">
       <CodeEditor customClass="about-code-editor">
-        <div v-for="(line, index) in codeLines" :key="index" class="code-line">
-          <span class="line-number">{{ index + 1 }}</span>
-          <span v-html="line"></span>
+        <div class="code-line">
+          <span class="line-number">1</span>
+          <span class="token-keyword">const&nbsp;</span> aboutMe <span class="token-operator">=</span> {
+        </div>
+        <div class="code-line">
+          <span class="line-number">2</span>
+          <span>&nbsp;&nbsp;name:</span> <span class="token-string">"梅友飞"</span>,
+        </div>
+        <div class="code-line">
+          <span class="line-number">3</span>
+          <span>&nbsp;&nbsp;passion:</span> <span class="token-string">"前端开发"</span>,
+        </div>
+        <div class="code-line">
+          <span class="line-number">4</span>
+          <span>&nbsp;&nbsp;expertise:</span> [<span class="token-string">"Vue"</span>, <span
+            class="token-string">"Next.js"</span>, <span class="token-string">"全栈开发"</span>],
+        </div>
+        <div class="code-line">
+          <span class="line-number">5</span>
+          <span>&nbsp;&nbsp;education:</span> <span class="token-string">"本科，平顶山学院"</span>,
+        </div>
+        <div class="code-line">
+          <span class="line-number">6</span>
+          <span>&nbsp;&nbsp;experience:</span> <span class="token-string">"2 年专业经验"</span>,
+        </div>
+        <div class="code-line">
+          <span class="line-number">7</span>
+          <span>&nbsp;&nbsp;goals:</span> <span class="token-string">"不断学习与创新"</span>
+        </div>
+        <div class="code-line">
+          <span class="line-number">8</span>
+          };
         </div>
       </CodeEditor>
     </div>
@@ -13,10 +42,40 @@
       <p>我是梅友飞，一名充满激情的前端开发工程师，拥有扎实的技术基础和2年的实际项目经验。我喜欢探索新技术，并将其应用到实际项目中，为用户创造流畅、直观的交互体验。</p>
       <p>我的技术栈涵盖前端和后端，能够独立完成从需求分析到部署上线的全流程开发。同时，我对AI技术有浓厚兴趣，并已在实际项目中进行了深度实践。</p>
       <div class="info-list">
-        <div v-for="(item, index) in infoItems" :key="index" class="info-item">
-          <i :class="item.icon"></i>
+        <div class="info-item">
+          <i class="fas fa-user"></i>
           <div>
-            <span>{{ item.label }}:</span> {{ item.value }}
+            <span>姓名:</span> 梅友飞
+          </div>
+        </div>
+        <div class="info-item">
+          <i class="fas fa-calendar"></i>
+          <div>
+            <span>出生日期:</span> 2002.11.02
+          </div>
+        </div>
+        <div class="info-item">
+          <i class="fas fa-envelope"></i>
+          <div>
+            <span>邮箱:</span> 18737582236@163.com
+          </div>
+        </div>
+        <div class="info-item">
+          <i class="fas fa-phone"></i>
+          <div>
+            <span>电话/微信:</span> 187 3758 2236
+          </div>
+        </div>
+        <div class="info-item">
+          <i class="fas fa-graduation-cap"></i>
+          <div>
+            <span>学历:</span> 本科，平顶山学院
+          </div>
+        </div>
+        <div class="info-item">
+          <i class="fas fa-briefcase"></i>
+          <div>
+            <span>工作经验:</span> 2年
           </div>
         </div>
       </div>
@@ -26,26 +85,6 @@
 
 <script setup>
 import CodeEditor from './CodeEditor.vue';
-
-const codeLines = [
-  `<span class="token-keyword">const&nbsp;</span> aboutMe <span class="token-operator">=</span> {`,
-  `<span>&nbsp;&nbsp;name:</span> <span class="token-string">"梅友飞"</span>,`,
-  `<span>&nbsp;&nbsp;passion:</span> <span class="token-string">"前端开发"</span>,`,
-  `<span>&nbsp;&nbsp;expertise:</span> [<span class="token-string">"Vue"</span>, <span class="token-string">"Next.js"</span>, <span class="token-string">"全栈开发"</span>],`,
-  `<span>&nbsp;&nbsp;education:</span> <span class="token-string">"本科，平顶山学院"</span>,`,
-  `<span>&nbsp;&nbsp;experience:</span> <span class="token-string">"2 年专业经验"</span>,`,
-  `<span>&nbsp;&nbsp;goals:</span> <span class="token-string">"不断学习与创新"</span>`,
-  `};`
-];
-
-const infoItems = [
-  { icon: 'fas fa-user', label: '姓名', value: '梅友飞' },
-  { icon: 'fas fa-calendar', label: '出生日期', value: '2002.11.02' },
-  { icon: 'fas fa-envelope', label: '邮箱', value: '18737582236@163.com' },
-  { icon: 'fas fa-phone', label: '电话/微信', value: '187 3758 2236' },
-  { icon: 'fas fa-graduation-cap', label: '学历', value: '本科，平顶山学院' },
-  { icon: 'fas fa-briefcase', label: '工作经验', value: '2年' }
-];
 </script>
 
 <style scoped>
@@ -67,14 +106,14 @@ const infoItems = [
 .about-info h3 {
   font-size: 1.5rem;
   margin-bottom: 20px;
-  background: linear-gradient(to right, var(--primary), var(--secondary));
+  background: linear-gradient(to right, #2563eb, #8b5cf6);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .about-info p {
   margin-bottom: 15px;
-  color: var(--gray);
+  color: #64748b;
 }
 
 .info-list {
@@ -90,7 +129,7 @@ const infoItems = [
 }
 
 .info-item i {
-  color: var(--primary);
+  color: #2563eb;
   font-size: 20px;
   margin-right: 10px;
 }
@@ -98,10 +137,8 @@ const infoItems = [
 .info-item span {
   font-weight: 600;
   margin-right: 5px;
-  color: var(--light);
+  color: #f8fafc;
 }
-
-/* 代码编辑器样式会从CodeEditor组件中继承 */
 
 @media (max-width: 992px) {
   .about-content {

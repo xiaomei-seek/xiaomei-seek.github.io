@@ -3,7 +3,7 @@
     <div class="container">
       <div class="hero-content">
         <h1>你好，我是梅友飞</h1>
-        <p>2年经验的前端开发工程师，专注于构建现代、高性能的Web应用程序。拥有全栈能力，熟悉Vue、Next.js等前端框架，以及Node.js、Python等后端技术。</p>
+        <p>3年经验的前端开发工程师，专注于构建现代、高性能的Web应用程序。拥有全栈能力，熟悉Vue、Next.js等前端框架，以及Node.js、Python等后端技术。</p>
         <a href="#contact" class="btn">联系我</a>
       </div>
       
@@ -22,7 +22,7 @@
         </div>
         <div class="code-line">
           <span class="line-number">4</span>
-          <span>&nbsp;&nbsp;experience:</span> <span class="token-string">"2年"</span>,
+          <span>&nbsp;&nbsp;experience:</span> <span class="token-string">"3年"</span>,
         </div>
         <div class="code-line">
           <span class="line-number">5</span>

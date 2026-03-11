@@ -25,7 +25,7 @@
         </div>
         <div class="code-line">
           <span class="line-number">6</span>
-          <span>&nbsp;&nbsp;experience:</span> <span class="token-string">"2 年专业经验"</span>,
+          <span>&nbsp;&nbsp;experience:</span> <span class="token-string">"3 年专业经验"</span>,
         </div>
         <div class="code-line">
           <span class="line-number">7</span>

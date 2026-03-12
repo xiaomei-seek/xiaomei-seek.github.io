@@ -52,6 +52,62 @@ function closeImageViewer() {
 
 // 项目数据，添加了图片数组
 const projects = [
+{
+    title: '油运通',
+    subtitle: '多角色移动端App（uni-app）',
+    description: '覆盖老板、调度、司机等10+角色的油品运输管理App，打通派单—运输—签收—对账全流程，支持实时消息推送与司机轨迹追踪。',
+    techStack: ['uni-app', 'Vue3', 'WebSocket', 'uniUI', '腾讯地图', 'Canvas'],
+    images: ['/images/new/yy.png'],
+    imageDescriptions: ['简介图']
+  },
+  {
+    title: '豆包车 / 移新家',
+    subtitle: '滴滴三方运力供应商全栈项目',
+    description: '对接滴滴包车/搬家开放平台的多租户系统，涵盖后端服务、后台管理、司机端App及自营小程序，支持接单、做单、退款等全流程。',
+    techStack: ['Java', 'Vue3', 'uniappX', 'uni-app', 'Arco Design', 'TypeScript', 'MySQL', 'Redis', 'OSS'],
+    images: ['/images/new/bc.png','/images/new/bj.png'],
+    imageDescriptions: ['包车部分截图','搬家部分截图']
+  },
+  {
+    title: '我滴宠',
+    subtitle: '宠物AI跨端应用，小程序、iOS、安卓',
+    description: '宠物智能设备与AI互动平台，支持宠物档案、健康数据、AI品种/心情识别、SSE流式聊天及设备实时连接管理。',
+    techStack: ['uni-app', 'Vuex', 'WebSocket', 'SSE', 'Canvas 2D', 'Lottie', '腾讯地图', 'OSS'],
+    images: ['/images/new/wdc.png'],
+    imageDescriptions: ['简介图']
+  },
+  {
+    title: '打字岛',
+    subtitle: '在线打字练习平台（Next.js）',
+    description: '多模式打字练习网站，支持拼音、中英文、编程代码等课程体系，集成用户体系、会员支付及详细的WPM/准确率能力统计。',
+    techStack: ['Next.js 14', 'TypeScript', 'Tailwind CSS', 'Monaco Editor', 'Framer Motion', 'Radix UI', 'PM2'],
+    images: ['/images/new/dzd.jpg'],
+    imageDescriptions: ['练习界面']
+  },
+  {
+    title: '鹿客官网',
+    subtitle: '智能锁品牌营销站点（Next.js）',
+    description: '配置化驱动的多页面品牌官网，覆盖产品详情、产品对比、帮助中心、门店地图等核心页面，运营可在后台动态更新内容。',
+    techStack: ['Next.js 15', 'TypeScript', 'Tailwind CSS v4', 'Framer Motion'],
+    images: ['/images/new/lk.png'],
+    imageDescriptions: ['简介图']
+  },
+  {
+    title: '煤矿/核生化监测后台',
+    subtitle: 'Python Flask 内网全栈项目',
+    description: '内网监测系统，集成海康威视视频流（HLS）展示、Modbus堆煤状态告警，以及本地部署DeepSeek大模型；另含核生化大屏实时浓度监测与模拟报警。',
+    techStack: ['Python', 'Flask', 'Vue', 'OpenUI', 'MySQL', 'Modbus', '本地大模型'],
+    images: ['/images/new/jc.png'],
+    imageDescriptions: ['简介图']
+  },
+  {
+    title: '及药网',
+    subtitle: '药品销售小程序、后台管理',
+    description: 'uniapp开发的药品电商小程序，包含线上售卖和线下药柜取件。',
+    techStack: ['uniapp','vue','小程序'],
+    images: ['/images/new/jyw.png'],
+    imageDescriptions: ['简介图']
+  },
   {
     title: '迪纳曼可电商小程序',
     subtitle: '微信小程序 + Vue2后台管理',

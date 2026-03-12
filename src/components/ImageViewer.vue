@@ -48,12 +48,16 @@ const emit = defineEmits(['close']);
 
 const currentIndex = ref(0);
 
-// 当项目改变时重置索引
 watch(() => props.project, () => {
   currentIndex.value = 0;
 });
 
-// 计算当前显示的图片
+// 切换图片时滚动回顶部
+watch(currentIndex, () => {
+  const container = document.querySelector('.image-container');
+  if (container) container.scrollTop = 0;
+});
+
 const currentImage = computed(() => {
   if (!props.project || !props.project.images || props.project.images.length === 0) {
     return '';
@@ -61,24 +65,20 @@ const currentImage = computed(() => {
   return props.project.images[currentIndex.value];
 });
 
-// 切换到下一张图片
 function nextImage() {
   if (currentIndex.value < props.project.images.length - 1) {
     currentIndex.value++;
   }
 }
 
-// 切换到上一张图片
 function prevImage() {
   if (currentIndex.value > 0) {
     currentIndex.value--;
   }
 }
 
-// 关闭查看器
 function closeViewer() {
   emit('close');
-  // 重置索引，以便下次打开时从第一张图片开始
   currentIndex.value = 0;
 }
 </script>
@@ -142,27 +142,24 @@ function closeViewer() {
   display: flex;
   flex: 1;
   min-height: 0;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   padding: 20px;
 }
 
+/* 核心改动：去掉固定高度，改为可滚动 */
 .image-container {
   flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 60vh;
-  max-height: 500px;
-  overflow: hidden;
+  overflow-y: auto;
+  max-height: 65vh;
+  border-radius: 4px;
 }
 
 .image-container img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
+  width: 100%;
+  height: auto;
+  display: block;
   border-radius: 4px;
-  transition: transform 0.3s ease;
 }
 
 .nav-btn {
@@ -171,6 +168,7 @@ function closeViewer() {
   border-radius: 50%;
   width: 40px;
   height: 40px;
+  flex-shrink: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -178,6 +176,9 @@ function closeViewer() {
   color: var(--light);
   margin: 0 10px;
   transition: all 0.2s ease;
+  /* 按钮固定在中间位置 */
+  position: sticky;
+  top: 50%;
 }
 
 .nav-btn:hover:not(:disabled) {
@@ -210,7 +211,7 @@ function closeViewer() {
 
 @media (max-width: 768px) {
   .image-container {
-    height: 40vh;
+    max-height: 55vh;
   }
   
   .nav-btn {

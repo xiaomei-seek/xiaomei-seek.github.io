@@ -48,29 +48,36 @@ function viewProject() {
 
 <style scoped>
 .project-card {
-  background-color: var(--dark);
+  background: var(--panel-bg);
+  border: 1px solid rgba(0, 255, 247, 0.15);
   border-radius: var(--border-radius);
   overflow: hidden;
   box-shadow: var(--box-shadow);
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   height: 100%;
   display: flex;
   flex-direction: column;
   cursor: pointer;
+  backdrop-filter: blur(8px);
 }
 
 .project-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-6px);
+  border-color: rgba(255, 42, 109, 0.4);
+  box-shadow: 0 16px 48px rgba(255, 42, 109, 0.15), 0 0 32px rgba(0, 255, 247, 0.08);
 }
 
 .project-header {
   padding: 20px;
   position: relative;
-  background: linear-gradient(to right, var(--primary-dark), var(--primary));
+  background: linear-gradient(105deg, rgba(0, 204, 192, 0.35) 0%, rgba(0, 255, 247, 0.2) 40%, rgba(255, 42, 109, 0.35) 100%);
+  border-bottom: 1px solid rgba(0, 255, 247, 0.2);
 }
 
 .project-title {
-  font-size: 1.2rem;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.05rem;
+  letter-spacing: 0.06em;
   margin-bottom: 5px;
   color: var(--light);
 }
@@ -108,10 +115,11 @@ function viewProject() {
 
 .tech-tag {
   padding: 4px 10px;
-  background-color: rgba(37, 99, 235, 0.2);
-  border-radius: 20px;
-  font-size: 0.75rem;
-  color: var(--primary);
+  background: rgba(0, 255, 247, 0.08);
+  border: 1px solid rgba(0, 255, 247, 0.35);
+  border-radius: 2px;
+  font-size: 0.72rem;
+  color: var(--neon-cyan);
 }
 
 /* 图片预览样式 */

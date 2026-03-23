@@ -1,13 +1,13 @@
 <template>
   <section class="hero" :id="id">
-    <div class="container">
+    <div class="container hero-layout">
       <div class="hero-content">
         <h1>你好，我是梅友飞</h1>
         <p>3年经验的前端开发工程师，专注于构建现代、高性能的Web应用程序。拥有全栈能力，熟悉Vue、Next.js等前端框架，以及Node.js、Python等后端技术。</p>
         <a href="#contact" class="btn">联系我</a>
       </div>
       
-      <CodeEditor>
+      <CodeEditor custom-class="hero-code-editor">
         <div class="code-line">
           <span class="line-number">1</span>
           <span class="token-keyword">const</span> developer <span class="token-operator">=</span> {
@@ -28,7 +28,7 @@
           <span class="line-number">5</span>
           <span>&nbsp;&nbsp;skills:</span> [<span class="token-string">"Vue"</span>, <span
             class="token-string">"Next.js"</span>, <span class="token-string">"TypeScript"</span>, <span
-            class="token-string">"Node.js"</span>],
+            class="token-string">"Node.js"</span>, <span class="token-string">"Python"</span>, <span class="token-string">"uniapp"</span>],
         </div>
         <div class="code-line">
           <span class="line-number">6</span>
@@ -77,73 +77,105 @@ defineProps({
   padding-top: 80px;
   position: relative;
   overflow: hidden;
+  background: linear-gradient(180deg, #0a0a1a 0%, #1a0a2e 45%, #0a0a0f 100%);
 }
 
 .hero::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: -10%;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, #2563eb 0%, transparent 70%);
-  opacity: 0.1;
-  border-radius: 50%;
-  z-index: -1;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 50% at 50% 100%, rgba(0, 255, 247, 0.06) 0%, transparent 55%);
+  pointer-events: none;
+  z-index: 0;
 }
 
 .hero::after {
   content: '';
   position: absolute;
-  bottom: -10%;
-  right: -10%;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, #8b5cf6 0%, transparent 70%);
-  opacity: 0.1;
-  border-radius: 50%;
-  z-index: -1;
+  inset: 0;
+  background: radial-gradient(circle at 80% 20%, rgba(255, 42, 109, 0.08) 0%, transparent 45%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero .container {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 400px);
+  gap: clamp(28px, 5vw, 56px);
+  align-items: center;
 }
 
 .hero-content {
-  max-width: 650px;
+  max-width: 640px;
+  min-width: 0;
+}
+
+@media (max-width: 960px) {
+  .hero-layout {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .hero-content {
+    max-width: 100%;
+  }
 }
 
 .hero h1 {
-  font-size: 4rem;
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: 900;
+  letter-spacing: 0.08em;
   margin-bottom: 20px;
-  line-height: 1.2;
-  background: linear-gradient(to right, #2563eb, #8b5cf6);
+  line-height: 1.15;
+  background: linear-gradient(90deg, var(--neon-cyan), var(--neon-magenta), var(--neon-cyan));
+  background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: fadeInUp 1s ease;
+  background-clip: text;
+  animation: fadeInUp 1s ease, hero-gradient 5s ease infinite;
+  filter: drop-shadow(0 0 24px rgba(0, 255, 247, 0.35));
+}
+
+@keyframes hero-gradient {
+  0%, 100% { background-position: 0% center; }
+  50% { background-position: 100% center; }
 }
 
 .hero p {
-  font-size: 1.2rem;
+  font-size: 1.05rem;
   margin-bottom: 30px;
-  color: #64748b;
+  color: var(--gray);
   animation: fadeInUp 1s 0.2s ease both;
 }
 
 .btn {
   display: inline-block;
-  padding: 12px 30px;
-  background: linear-gradient(to right, #2563eb, #8b5cf6);
-  color: #f8fafc;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
+  padding: 12px 28px;
+  background: transparent;
+  color: var(--neon-cyan);
+  border: 1px solid var(--neon-cyan);
+  border-radius: 2px;
+  font-size: 15px;
   font-weight: 600;
+  letter-spacing: 0.08em;
   cursor: pointer;
   transition: all 0.3s ease;
   text-decoration: none;
   animation: fadeInUp 1s 0.4s ease both;
+  box-shadow: 0 0 20px rgba(0, 255, 247, 0.15);
 }
 
 .btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(37, 99, 235, 0.4);
+  transform: translateY(-2px);
+  background: rgba(0, 255, 247, 0.12);
+  box-shadow: 0 0 28px rgba(0, 255, 247, 0.35);
 }
 
 .scroll-down {
@@ -151,8 +183,11 @@ defineProps({
   bottom: 30px;
   left: 50%;
   transform: translateX(-50%);
-  color: #64748b;
-  font-size: 14px;
+  color: var(--neon-cyan);
+  opacity: 0.65;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
   text-align: center;
   animation: bounce 2s infinite;
 }

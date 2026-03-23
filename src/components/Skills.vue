@@ -102,15 +102,19 @@ const skillCategories = [
 }
 
 .skill-category {
-  background-color: var(--dark);
+  background: var(--panel-bg);
+  border: 1px solid rgba(0, 255, 247, 0.18);
   border-radius: var(--border-radius);
   padding: 30px;
   box-shadow: var(--box-shadow);
-  transition: transform 0.3s ease;
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .skill-category:hover {
   transform: translateY(-5px);
+  border-color: rgba(0, 255, 247, 0.45);
+  box-shadow: 0 0 32px rgba(0, 255, 247, 0.12);
 }
 
 .skill-category h3 {
@@ -138,8 +142,8 @@ const skillCategories = [
 }
 
 .skills-list li::before {
-  content: '•';
-  color: var(--secondary);
+  content: '›';
+  color: var(--neon-magenta);
   position: absolute;
   left: 0;
   top: 0;

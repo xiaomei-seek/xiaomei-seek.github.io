@@ -104,16 +104,19 @@ import CodeEditor from './CodeEditor.vue';
 }
 
 .about-info h3 {
-  font-size: 1.5rem;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.25rem;
+  letter-spacing: 0.1em;
   margin-bottom: 20px;
-  background: linear-gradient(to right, #2563eb, #8b5cf6);
+  background: linear-gradient(90deg, var(--neon-cyan), var(--neon-magenta));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .about-info p {
   margin-bottom: 15px;
-  color: #64748b;
+  color: var(--gray);
 }
 
 .info-list {
@@ -129,15 +132,16 @@ import CodeEditor from './CodeEditor.vue';
 }
 
 .info-item i {
-  color: #2563eb;
+  color: var(--neon-cyan);
   font-size: 20px;
   margin-right: 10px;
+  filter: drop-shadow(0 0 6px rgba(0, 255, 247, 0.4));
 }
 
 .info-item span {
   font-weight: 600;
   margin-right: 5px;
-  color: #f8fafc;
+  color: var(--light);
 }
 
 @media (max-width: 992px) {

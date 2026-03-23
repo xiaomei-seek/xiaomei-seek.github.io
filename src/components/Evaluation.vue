@@ -37,10 +37,12 @@ const evaluationItems = [
 
 <style scoped>
 .evaluation-container {
-  background-color: var(--dark);
+  background: var(--panel-bg);
+  border: 1px solid rgba(255, 107, 53, 0.22);
   border-radius: var(--border-radius);
   padding: 40px;
   box-shadow: var(--box-shadow);
+  backdrop-filter: blur(10px);
 }
 
 .evaluation-items {
@@ -56,10 +58,11 @@ const evaluationItems = [
 }
 
 .evaluation-item i {
-  color: var(--success);
+  color: var(--neon-orange);
   font-size: 24px;
   margin-right: 15px;
   margin-top: 5px;
+  filter: drop-shadow(0 0 8px rgba(255, 107, 53, 0.45));
 }
 
 .evaluation-text p {

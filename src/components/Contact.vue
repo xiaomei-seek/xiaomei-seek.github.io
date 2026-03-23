@@ -67,7 +67,7 @@ const contactInfoRight = [
   {
     icon: 'fas fa-map-marker-alt',
     title: '求职意向',
-    value: '前端开发工程师'
+    value: '前端/全栈开发工程师'
   },
   {
     icon: 'fas fa-graduation-cap',
@@ -85,10 +85,18 @@ const contactInfoRight = [
 }
 
 .contact-info {
-  background-color: var(--dark);
+  background: var(--panel-bg);
+  border: 1px solid rgba(255, 42, 109, 0.2);
   border-radius: var(--border-radius);
   padding: 40px;
   box-shadow: var(--box-shadow);
+  backdrop-filter: blur(10px);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-info:hover {
+  border-color: rgba(255, 42, 109, 0.45);
+  box-shadow: 0 0 36px rgba(255, 42, 109, 0.1);
 }
 
 .contact-item {
@@ -104,8 +112,11 @@ const contactInfoRight = [
 }
 
 .contact-item-text h3 {
-  font-size: 1.1rem;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
   margin-bottom: 5px;
+  color: var(--light);
 }
 
 .contact-item-text p {

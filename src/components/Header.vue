@@ -64,8 +64,9 @@ header {
   top: 0;
   left: 0;
   width: 100%;
-  background-color: rgba(2, 6, 23, 0.8);
-  backdrop-filter: blur(10px);
+  background: rgba(5, 5, 8, 0.82);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 255, 247, 0.12);
   z-index: 1000;
   transition: all 0.3s ease;
   padding: 0;
@@ -74,7 +75,7 @@ header {
 
 header.scrolled {
   padding: 5px 0;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 24px rgba(0, 255, 247, 0.06);
 }
 
 .navbar {
@@ -85,10 +86,16 @@ header.scrolled {
 }
 
 .logo {
-  font-size: 24px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.1rem;
   font-weight: 700;
-  color: var(--primary);
+  letter-spacing: 0.06em;
+  background: linear-gradient(90deg, var(--neon-cyan), var(--neon-magenta));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   text-decoration: none;
+  filter: drop-shadow(0 0 12px rgba(0, 255, 247, 0.35));
 }
 
 .nav-links {
@@ -105,7 +112,8 @@ header.scrolled {
 }
 
 .nav-links a:hover {
-  color: var(--primary);
+  color: var(--neon-cyan);
+  text-shadow: 0 0 12px rgba(0, 255, 247, 0.45);
 }
 
 .menu-toggle {
@@ -129,8 +137,8 @@ header.scrolled {
     flex-direction: column;
     padding: 20px;
     gap: 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(0, 255, 247, 0.15);
+    border-bottom: 1px solid rgba(255, 42, 109, 0.12);
     transform: translateY(-150%);
     transition: transform 0.3s ease;
     z-index: 999;

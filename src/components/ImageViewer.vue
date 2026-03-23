@@ -102,12 +102,14 @@ function closeViewer() {
   width: 90%;
   max-width: 1000px;
   max-height: 90vh;
-  background-color: var(--dark);
+  background: var(--panel-bg);
+  border: 1px solid rgba(0, 255, 247, 0.25);
   border-radius: var(--border-radius);
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 48px rgba(0, 255, 247, 0.12), 0 20px 60px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(12px);
 }
 
 .image-viewer-header {
@@ -115,13 +117,15 @@ function closeViewer() {
   justify-content: space-between;
   align-items: center;
   padding: 15px 20px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(0, 255, 247, 0.15);
 }
 
 .image-viewer-header h3 {
   margin: 0;
   color: var(--light);
-  font-size: 1.2rem;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.06em;
 }
 
 .close-btn {

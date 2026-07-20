@@ -90,25 +90,25 @@ function closeViewer() {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.85);
+  background-color: rgba(12, 18, 30, 0.72);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 2000;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(8px);
 }
 
 .image-viewer-container {
   width: 90%;
   max-width: 1000px;
   max-height: 90vh;
-  background: var(--panel-bg);
-  border: 1px solid rgba(0, 255, 247, 0.25);
+  background: rgba(20, 28, 44, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.22);
   border-radius: var(--border-radius);
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 0 48px rgba(0, 255, 247, 0.12), 0 20px 60px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 24px 70px rgba(2, 6, 23, 0.42);
   backdrop-filter: blur(12px);
 }
 
@@ -117,7 +117,7 @@ function closeViewer() {
   justify-content: space-between;
   align-items: center;
   padding: 15px 20px;
-  border-bottom: 1px solid rgba(0, 255, 247, 0.15);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.16);
 }
 
 .image-viewer-header h3 {
@@ -167,7 +167,7 @@ function closeViewer() {
 }
 
 .nav-btn {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(15, 23, 42, 0.62);
   border: none;
   border-radius: 50%;
   width: 40px;
@@ -186,7 +186,8 @@ function closeViewer() {
 }
 
 .nav-btn:hover:not(:disabled) {
-  background-color: var(--primary);
+  background-color: rgba(125, 211, 252, 0.9);
+  color: #0f172a;
   transform: scale(1.1);
 }
 

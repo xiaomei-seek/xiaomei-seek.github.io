@@ -49,42 +49,53 @@ function viewProject() {
 <style scoped>
 .project-card {
   background: var(--panel-bg);
-  border: 1px solid rgba(0, 255, 247, 0.15);
+  border: 1px solid rgba(148, 163, 184, 0.18);
   border-radius: var(--border-radius);
   overflow: hidden;
   box-shadow: var(--box-shadow);
-  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.35s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   height: 100%;
   display: flex;
   flex-direction: column;
   cursor: pointer;
   backdrop-filter: blur(8px);
+  position: relative;
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 3px;
+  background: var(--accent-line);
+  opacity: 0.85;
+  z-index: 1;
 }
 
 .project-card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(255, 42, 109, 0.4);
-  box-shadow: 0 16px 48px rgba(255, 42, 109, 0.15), 0 0 32px rgba(0, 255, 247, 0.08);
+  transform: translateY(-8px) scale(1.01);
+  border-color: rgba(125, 211, 252, 0.34);
+  box-shadow: 0 18px 44px rgba(15, 23, 42, 0.24);
 }
 
 .project-header {
-  padding: 20px;
+  padding: 22px 22px 18px;
   position: relative;
-  background: linear-gradient(105deg, rgba(0, 204, 192, 0.35) 0%, rgba(0, 255, 247, 0.2) 40%, rgba(255, 42, 109, 0.35) 100%);
-  border-bottom: 1px solid rgba(0, 255, 247, 0.2);
+  background: rgba(17, 24, 39, 0.35);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.12);
 }
 
 .project-title {
   font-family: 'Orbitron', sans-serif;
   font-size: 1.05rem;
   letter-spacing: 0.06em;
-  margin-bottom: 5px;
+  margin-bottom: 6px;
   color: var(--light);
 }
 
 .project-subtitle {
   font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--gray);
 }
 
 .project-body {
@@ -115,8 +126,8 @@ function viewProject() {
 
 .tech-tag {
   padding: 4px 10px;
-  background: rgba(0, 255, 247, 0.08);
-  border: 1px solid rgba(0, 255, 247, 0.35);
+  background: rgba(125, 211, 252, 0.1);
+  border: 1px solid rgba(125, 211, 252, 0.28);
   border-radius: 2px;
   font-size: 0.72rem;
   color: var(--neon-cyan);

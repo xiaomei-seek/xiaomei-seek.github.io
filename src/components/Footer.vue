@@ -19,7 +19,7 @@ footer {
   text-align: center;
   padding: 56px 20px;
   background: var(--darker);
-  border-top: 1px solid rgba(0, 255, 247, 0.12);
+  border-top: 1px solid rgba(148, 163, 184, 0.16);
 }
 
 .footer-logo {

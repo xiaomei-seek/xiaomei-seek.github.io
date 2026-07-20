@@ -29,11 +29,11 @@ const props = defineProps({
   right: -30px;
   width: 350px;
   height: 350px;
-  background: rgba(8, 8, 16, 0.95);
-  border: 1px solid rgba(0, 255, 247, 0.25);
+  background: rgba(17, 24, 39, 0.9);
+  border: 1px solid rgba(125, 211, 252, 0.22);
   border-radius: 4px;
   overflow: hidden;
-  box-shadow: 0 0 28px rgba(0, 255, 247, 0.12);
+  box-shadow: 0 18px 42px rgba(15, 23, 42, 0.24);
   transform: rotate(8deg);
   z-index: -1;
   opacity: 0.85;
@@ -41,8 +41,8 @@ const props = defineProps({
 
 .code-editor-header {
   height: 30px;
-  background: rgba(5, 5, 12, 0.98);
-  border-bottom: 1px solid rgba(255, 42, 109, 0.2);
+  background: rgba(15, 23, 42, 0.96);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.16);
   display: flex;
   align-items: center;
   padding: 0 10px;
@@ -84,11 +84,11 @@ const props = defineProps({
   right: 0;
   width: 100%;
   height: 100%;
-  background: rgba(8, 8, 16, 0.95);
-  border: 1px solid rgba(0, 255, 247, 0.22);
+  background: rgba(17, 24, 39, 0.9);
+  border: 1px solid rgba(125, 211, 252, 0.2);
   border-radius: 4px;
   overflow: hidden;
-  box-shadow: 0 0 32px rgba(0, 255, 247, 0.1);
+  box-shadow: 0 16px 38px rgba(15, 23, 42, 0.2);
   transform: none;
   opacity: 1;
   z-index: 1;
@@ -148,15 +148,15 @@ const props = defineProps({
 }
 
 .token-keyword {
-  color: #ff2a6d;
+  color: #c084fc;
 }
 
 .token-operator {
-  color: #ff6b35;
+  color: #fbbf24;
 }
 
 .token-string {
-  color: #00fff7;
+  color: #7dd3fc;
 }
 
 .token-function {
@@ -168,7 +168,7 @@ const props = defineProps({
 }
 
 .typing-animation {
-  border-right: 2px solid var(--neon-cyan, #00fff7);
+  border-right: 2px solid var(--neon-cyan, #7dd3fc);
   animation: blink 1s step-end infinite;
 }
 
@@ -177,7 +177,7 @@ const props = defineProps({
     border-color: transparent;
   }
   50% {
-    border-color: var(--neon-cyan, #00fff7);
+    border-color: var(--neon-cyan, #7dd3fc);
   }
 }
 </style>

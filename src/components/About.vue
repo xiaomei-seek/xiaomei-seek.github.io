@@ -135,7 +135,7 @@ import CodeEditor from './CodeEditor.vue';
   color: var(--neon-cyan);
   font-size: 20px;
   margin-right: 10px;
-  filter: drop-shadow(0 0 6px rgba(0, 255, 247, 0.4));
+  filter: drop-shadow(0 0 6px rgba(125, 211, 252, 0.24));
 }
 
 .info-item span {

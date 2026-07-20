@@ -38,11 +38,22 @@ const evaluationItems = [
 <style scoped>
 .evaluation-container {
   background: var(--panel-bg);
-  border: 1px solid rgba(255, 107, 53, 0.22);
+  border: 1px solid rgba(148, 163, 184, 0.18);
   border-radius: var(--border-radius);
   padding: 40px;
   box-shadow: var(--box-shadow);
   backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.evaluation-container::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 3px;
+  background: var(--accent-line);
+  opacity: 0.75;
 }
 
 .evaluation-items {
@@ -62,7 +73,7 @@ const evaluationItems = [
   font-size: 24px;
   margin-right: 15px;
   margin-top: 5px;
-  filter: drop-shadow(0 0 8px rgba(255, 107, 53, 0.45));
+  filter: drop-shadow(0 0 8px rgba(245, 158, 11, 0.24));
 }
 
 .evaluation-text p {

@@ -86,17 +86,28 @@ const contactInfoRight = [
 
 .contact-info {
   background: var(--panel-bg);
-  border: 1px solid rgba(255, 42, 109, 0.2);
+  border: 1px solid rgba(148, 163, 184, 0.18);
   border-radius: var(--border-radius);
   padding: 40px;
   box-shadow: var(--box-shadow);
   backdrop-filter: blur(10px);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-info::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 3px;
+  background: var(--accent-line);
+  opacity: 0.75;
 }
 
 .contact-info:hover {
-  border-color: rgba(255, 42, 109, 0.45);
-  box-shadow: 0 0 36px rgba(255, 42, 109, 0.1);
+  border-color: rgba(125, 211, 252, 0.32);
+  box-shadow: 0 16px 38px rgba(15, 23, 42, 0.18);
 }
 
 .contact-item {

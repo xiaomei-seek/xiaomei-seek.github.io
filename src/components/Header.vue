@@ -64,9 +64,9 @@ header {
   top: 0;
   left: 0;
   width: 100%;
-  background: rgba(5, 5, 8, 0.82);
+  background: rgba(17, 24, 39, 0.82);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(0, 255, 247, 0.12);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.16);
   z-index: 1000;
   transition: all 0.3s ease;
   padding: 0;
@@ -75,7 +75,7 @@ header {
 
 header.scrolled {
   padding: 5px 0;
-  box-shadow: 0 0 24px rgba(0, 255, 247, 0.06);
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.14);
 }
 
 .navbar {
@@ -95,7 +95,7 @@ header.scrolled {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-decoration: none;
-  filter: drop-shadow(0 0 12px rgba(0, 255, 247, 0.35));
+  filter: drop-shadow(0 0 10px rgba(125, 211, 252, 0.2));
 }
 
 .nav-links {
@@ -113,7 +113,7 @@ header.scrolled {
 
 .nav-links a:hover {
   color: var(--neon-cyan);
-  text-shadow: 0 0 12px rgba(0, 255, 247, 0.45);
+  text-shadow: 0 0 10px rgba(125, 211, 252, 0.24);
 }
 
 .menu-toggle {
@@ -137,8 +137,8 @@ header.scrolled {
     flex-direction: column;
     padding: 20px;
     gap: 20px;
-    border-top: 1px solid rgba(0, 255, 247, 0.15);
-    border-bottom: 1px solid rgba(255, 42, 109, 0.12);
+    border-top: 1px solid rgba(148, 163, 184, 0.16);
+    border-bottom: 1px solid rgba(148, 163, 184, 0.12);
     transform: translateY(-150%);
     transition: transform 0.3s ease;
     z-index: 999;

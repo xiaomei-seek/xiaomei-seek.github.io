@@ -23,6 +23,7 @@
       <Evaluation id="evaluation" />
       <Contact id="contact" />
       <Footer />
+      <EasterEgg />
     </main>
   </div>
 </template>
@@ -59,6 +60,7 @@ import Projects from './components/Projects.vue';
 import Evaluation from './components/Evaluation.vue';
 import Contact from './components/Contact.vue';
 import Footer from './components/Footer.vue';
+import EasterEgg from './components/EasterEgg.vue';
 
 // 滚动动画
 function checkFade() {

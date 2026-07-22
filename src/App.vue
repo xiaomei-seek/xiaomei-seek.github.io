@@ -63,12 +63,15 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
-import { bubbleCursor } from 'cursor-effects';
+import { createCursorTrail } from './utils/bubbleCursor.js';
 import About from './components/About.vue';
 import Skills from './components/Skills.vue';
 import Projects from './components/Projects.vue';
 import Evaluation from './components/Evaluation.vue';
 import Contact from './components/Contact.vue';
+
+// 鼠标特效切换：'bubble' 气泡 | 'image' 图片轨迹
+const CURSOR_TRAIL_MODE = 'bubble';
 
 const navItems = [
   { id: 'about', label: '关于', en: 'About' },
@@ -81,7 +84,7 @@ const navItems = [
 const activePane = ref('about');
 const menuOpen = ref(false);
 const year = new Date().getFullYear();
-let bubbleEffect = null;
+let cursorTrail = null;
 
 function selectPane(id) {
   activePane.value = id;
@@ -97,11 +100,27 @@ onMounted(() => {
     activePane.value = 'projects';
   }
 
-  bubbleEffect = bubbleCursor();
+  cursorTrail = createCursorTrail(
+    CURSOR_TRAIL_MODE === 'image'
+      ? {
+          mode: 'image',
+          imageSrc: '/images/tongluoshao.svg', // 也可换成 /images/xingxing.svg
+          size: 28, // 图片边长（px）
+          minDistance: 28, // 两次生成至少移动多少像素（越小越密）
+          maxParticles: 16, // 同时存在的粒子上限
+          spawnChance: 0.65 // 满足距离后生成概率 0~1（越大越密）
+        }
+      : {
+          mode: 'bubble',
+          minDistance: 6, // 两次生成至少移动多少像素（越小越密）
+          maxParticles: 28, // 同时存在的粒子上限
+          spawnChance: 0.75 // 满足距离后生成概率 0~1（越大越密）
+        }
+  );
 });
 
 onUnmounted(() => {
-  bubbleEffect?.destroy();
+  cursorTrail?.destroy();
 });
 </script>
 

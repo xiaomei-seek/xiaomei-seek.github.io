@@ -11,7 +11,10 @@
     "deploy": "npm run build && gh-pages -d dist"
   },
   "dependencies": {
+    "cursor-effects": "^1.0.18",
+    "lxgw-wenkai-webfont": "^1.7.0",
     "vue": "^3.3.4",
+    "vue-easy-lightbox": "^1.19.0",
     "vue-router": "^4.2.4"
   },
   "devDependencies": {

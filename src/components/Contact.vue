@@ -1,171 +1,85 @@
 <template>
-  <section class="section" :id="id">
-    <div class="container">
-      <div class="section-title fade-in">
-        <h2>联系方式</h2>
-      </div>
-      <div class="contact-container">
-        <div class="contact-info fade-in">
-          <div v-for="(item, index) in contactInfoLeft" :key="index" class="contact-item">
-            <i :class="item.icon"></i>
-            <div class="contact-item-text">
-              <h3>{{ item.title }}</h3>
-              <p>{{ item.value }}</p>
-            </div>
-          </div>
-          <!-- 社交链接可在未来添加 -->
-          <!-- <div class="social-links">
-            <a href="#" class="social-link">
-              <i class="fab fa-weixin"></i>
-            </a>
-            <a href="#" class="social-link">
-              <i class="fab fa-github"></i>
-            </a>
-            <a href="#" class="social-link">
-              <i class="fab fa-linkedin"></i>
-            </a>
-          </div> -->
-        </div>
-        <div class="contact-info fade-in">
-          <div v-for="(item, index) in contactInfoRight" :key="index" class="contact-item">
-            <i :class="item.icon"></i>
-            <div class="contact-item-text">
-              <h3>{{ item.title }}</h3>
-              <p>{{ item.value }}</p>
-            </div>
-          </div>
-        </div>
+  <section class="pane">
+    <h2 class="pane-title">联系方式</h2>
+    <p class="intro">有机会聊聊项目或机会，欢迎联系。</p>
+
+    <div class="rows">
+      <div v-for="item in contacts" :key="item.label" class="row">
+        <span class="label">{{ item.label }}</span>
+        <a v-if="item.href" :href="item.href">{{ item.value }}</a>
+        <span v-else>{{ item.value }}</span>
       </div>
     </div>
+
+    <EasterEgg />
   </section>
 </template>
 
 <script setup>
-import { defineProps } from 'vue';
+import EasterEgg from './EasterEgg.vue';
 
-defineProps({
-  id: {
-    type: String,
-    default: 'contact'
-  }
-});
-
-const contactInfoLeft = [
-  {
-    icon: 'fas fa-phone',
-    title: '电话/微信',
-    value: '187 3758 2236'
-  },
-  {
-    icon: 'fas fa-envelope',
-    title: '邮箱',
-    value: '18737582236@163.com'
-  }
-];
-
-const contactInfoRight = [
-  {
-    icon: 'fas fa-map-marker-alt',
-    title: '求职意向',
-    value: '前端/全栈开发工程师'
-  },
-  {
-    icon: 'fas fa-graduation-cap',
-    title: '学历',
-    value: '本科，平顶山学院'
-  }
+const contacts = [
+  { label: '电话 / 微信', value: '187 3758 2236' },
+  { label: '邮箱', value: '18737582236@163.com', href: 'mailto:18737582236@163.com' },
+  { label: '求职意向', value: '前端 / 全栈开发工程师' },
+  { label: '学历', value: '本科，平顶山学院' }
 ];
 </script>
 
 <style scoped>
-.contact-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
+.pane {
+  max-width: 560px;
 }
 
-.contact-info {
-  background: var(--panel-bg);
-  border: 1px solid rgba(148, 163, 184, 0.18);
-  border-radius: var(--border-radius);
-  padding: 40px;
-  box-shadow: var(--box-shadow);
-  backdrop-filter: blur(10px);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.contact-info::before {
-  content: '';
-  position: absolute;
-  inset: 0 0 auto;
-  height: 3px;
-  background: var(--accent-line);
-  opacity: 0.75;
-}
-
-.contact-info:hover {
-  border-color: rgba(125, 211, 252, 0.32);
-  box-shadow: 0 16px 38px rgba(15, 23, 42, 0.18);
-}
-
-.contact-item {
-  display: flex;
-  align-items: flex-start;
-  margin-bottom: 25px;
-}
-
-.contact-item i {
-  color: var(--primary);
-  font-size: 24px;
-  margin-right: 15px;
-}
-
-.contact-item-text h3 {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 0.95rem;
+.pane-title {
+  font-size: 1.75rem;
+  font-weight: 700;
   letter-spacing: 0.06em;
-  margin-bottom: 5px;
-  color: var(--light);
+  margin-bottom: 8px;
 }
 
-.contact-item-text p {
-  color: var(--gray);
+.intro {
+  color: var(--muted);
+  margin-bottom: 36px;
+  font-size: 0.98rem;
 }
 
-.social-links {
+.rows {
   display: flex;
-  gap: 15px;
-  margin-top: 30px;
+  flex-direction: column;
+  gap: 0;
+  border-top: 1px solid var(--line);
 }
 
-.social-link {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: var(--darker);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--light);
-  transition: all 0.3s ease;
+.row {
+  display: grid;
+  grid-template-columns: 7.5rem 1fr;
+  gap: 16px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 1.05rem;
+  align-items: baseline;
 }
 
-.social-link:hover {
-  background-color: var(--primary);
-  transform: translateY(-3px);
+.label {
+  color: var(--muted);
+  font-size: 0.92rem;
 }
 
-@media (max-width: 992px) {
-  .contact-container {
+a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  color: var(--accent);
+}
+
+@media (max-width: 480px) {
+  .row {
     grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 768px) {
-  .contact-info {
-    padding: 30px 20px;
+    gap: 4px;
   }
 }
 </style>

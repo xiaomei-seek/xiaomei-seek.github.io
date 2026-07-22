@@ -1,162 +1,147 @@
 <template>
-  <section class="section" :id="id">
-    <div class="container">
-      <div class="section-title fade-in">
-        <h2>专业技能</h2>
-      </div>
-      <div class="skills-container">
-        <div v-for="(category, index) in skillCategories" :key="index" class="skill-category fade-in">
-          <h3><i :class="category.icon"></i> {{ category.title }}</h3>
-          <ul class="skills-list">
-            <li v-for="(skill, skillIndex) in category.skills" :key="skillIndex">{{ skill }}</li>
-          </ul>
-        </div>
+  <section class="pane">
+    <h2 class="pane-title">专业技能</h2>
+    <p class="intro">覆盖前端到后端与工程化。</p>
+
+    <div class="grid">
+      <div v-for="(category, index) in skillCategories" :key="category.title" class="cat">
+        <h3 class="cat-title">
+          <span class="cat-idx">{{ String(index + 1).padStart(2, '0') }}</span>
+          {{ category.title }}
+        </h3>
+        <ul>
+          <li v-for="(skill, i) in category.skills" :key="i">{{ skill }}</li>
+        </ul>
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
-import { defineProps } from 'vue';
-
-defineProps({
-  id: {
-    type: String,
-    default: 'skills'
-  }
-});
-
 const skillCategories = [
   {
     title: '前端框架',
-    icon: 'fas fa-code',
     skills: [
-      '熟悉JavaScript、TypeScript语法',
-      '精通Vue 2/3全家桶（Vuex/Pinia, Vue Router, Vite等）',
-      '熟悉前沿开发模式（Next.js, Vercel部署）',
-      '丰富的微信小程序开发经验',
-      '熟悉小程序生态与性能优化'
+      '熟悉 JavaScript、TypeScript 语法',
+      '精通 Vue 2/3 全家桶（Vuex/Pinia, Vue Router, Vite 等）',
+      '熟悉前沿开发模式（Next.js, Vercel 部署）',
+      '丰富的微信小程序开发经验'
     ]
   },
   {
-    title: 'Web技术',
-    icon: 'fas fa-laptop-code',
+    title: 'Web 技术',
     skills: [
-      '深入掌握JavaScript/TypeScript核心特性',
-      '熟练使用ES6+语法',
-      '精通现代前端工程化',
-      '掌握模块化开发',
-      '熟练运用Promise/Async, Axios等异步方案'
+      '深入掌握 JavaScript / TypeScript 核心特性',
+      '熟练使用 ES6+ 语法',
+      '精通现代前端工程化与模块化开发',
+      '熟练运用 Promise / Async、Axios 等异步方案'
     ]
   },
   {
-    title: 'UI开发',
-    icon: 'fas fa-paint-brush',
+    title: 'UI 开发',
     skills: [
-      '熟练运用Element UI/Vant等企业级组件库',
+      '熟练运用 Element UI / Vant 等企业级组件库',
       '具备定制化组件开发能力',
-      '熟悉Arco Design设计体系',
-      '熟悉Shadcn现代UI范式',
-      '熟悉Tailwind CSS'
+      '熟悉 Arco Design、Shadcn、Tailwind CSS'
     ]
   },
   {
     title: '后端开发',
-    icon: 'fas fa-server',
     skills: [
-      '掌握Node.js (Express)开发',
-      '掌握Python (Flask)后端开发',
-      '可自主实现RESTful API',
-      '熟悉JWT鉴权、文件处理',
-      '掌握短信验证、桶存储等功能开发'
+      '掌握 Node.js (Express)、Python (Flask)',
+      '可自主实现 RESTful API',
+      '熟悉 JWT 鉴权、文件处理、短信验证、对象存储'
     ]
   },
   {
     title: '数据层',
-    icon: 'fas fa-database',
     skills: [
-      '熟练操作MySQL数据库',
-      '掌握Sequelize/Prisma等ORM工具',
-      '会使用Redis',
-      '能优化高频访问场景',
-      '掌握异步任务实现'
+      '熟练操作 MySQL',
+      '掌握 Sequelize / Prisma 等 ORM',
+      '会使用 Redis，能优化高频访问与异步任务'
     ]
   },
   {
     title: '工程化',
-    icon: 'fas fa-tools',
     skills: [
-      '熟练使用Git进行团队协作开发',
-      '掌握Linux基础服务部署（Nginx, PM2, systemctl等）',
-      '熟悉Linux基础命令'
+      '熟练使用 Git 进行团队协作',
+      '掌握 Linux 基础服务部署（Nginx, PM2, systemctl 等）'
     ]
   }
 ];
 </script>
 
 <style scoped>
-.skills-container {
+.pane {
+  max-width: 760px;
+}
+
+.pane-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+}
+
+.intro {
+  color: var(--muted);
+  margin-bottom: 36px;
+  font-size: 0.98rem;
+}
+
+.grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 36px 48px;
 }
 
-.skill-category {
-  background: var(--panel-bg);
-  border: 1px solid rgba(148, 163, 184, 0.18);
-  border-radius: var(--border-radius);
-  padding: 30px;
-  box-shadow: var(--box-shadow);
-  backdrop-filter: blur(10px);
-  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.skill-category::before {
-  content: '';
-  position: absolute;
-  inset: 0 0 auto;
-  height: 3px;
-  background: var(--accent-line);
-  opacity: 0.75;
-}
-
-.skill-category:hover {
-  transform: translateY(-5px);
-  border-color: rgba(125, 211, 252, 0.32);
-  box-shadow: 0 16px 38px rgba(15, 23, 42, 0.18);
-}
-
-.skill-category h3 {
+.cat-title {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
   font-size: 1.2rem;
-  margin-bottom: 20px;
-  color: var(--primary);
-  position: relative;
-  padding-left: 30px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding-bottom: 12px;
+  margin-bottom: 14px;
+  border-bottom: 2px solid var(--ink);
 }
 
-.skill-category h3 i {
-  position: absolute;
-  left: 0;
-  top: 3px;
+.cat-idx {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
 }
 
-.skills-list {
+ul {
   list-style: none;
 }
 
-.skills-list li {
-  margin-bottom: 15px;
+li {
   position: relative;
-  padding-left: 20px;
+  padding-left: 15px;
+  margin-bottom: 9px;
+  color: #444;
+  font-size: 0.95rem;
+  line-height: 1.65;
 }
 
-.skills-list li::before {
-  content: '›';
-  color: var(--neon-magenta);
+li::before {
+  content: '';
   position: absolute;
   left: 0;
-  top: 0;
+  top: 0.7em;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--muted);
+}
+
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
 }
 </style>

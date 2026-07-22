@@ -1,6 +1,6 @@
 <template>
   <section ref="rootEl" class="easter-egg" :class="{ visible }" aria-label="页面彩蛋">
-    <p class="egg-hint">{{ hintText }}</p>
+    <!-- <p class="egg-hint">{{ hintText }}</p> -->
     <pre class="egg-art" aria-hidden="true">{{ art }}</pre>
     <p class="egg-line">
       <span class="egg-prompt">$</span> {{ lineText }}<span class="egg-cursor" :class="{ blink: visible }">█</span>
@@ -12,9 +12,9 @@
 import { ref, onMounted, onUnmounted } from 'vue';
 
 const art = [
-  '   (  )   (   )  )',
-  '  ) (   )  (  (',
-  '  ( )  (    ) )',
+  ' (  )   (   )  )',
+  ' ) (   )  (  (',
+  ' ( )  (    ) )',
   '_____________',
   '    <_____________> ___',
   '    |             |/ _ \\',
@@ -84,21 +84,14 @@ onUnmounted(() => {
 
 <style scoped>
 .easter-egg {
-  min-height: 60vh;
+  margin-top: 56px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 28px;
-  padding: 80px 20px 100px;
-  text-align: center;
-  background:
-    radial-gradient(ellipse 70% 50% at 50% 80%, rgba(125, 211, 252, 0.06), transparent 60%),
-    linear-gradient(180deg, transparent 0%, rgba(8, 12, 22, 0.55) 40%, #0a101c 100%);
-  border-top: 1px solid rgba(148, 163, 184, 0.1);
+  gap: 18px;
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
 .easter-egg.visible {
@@ -108,11 +101,11 @@ onUnmounted(() => {
 
 .egg-hint {
   font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
-  font-size: 0.85rem;
-  color: var(--neon-cyan);
-  letter-spacing: 0.04em;
-  opacity: 0.75;
+  font-size: 0.82rem;
+  color: var(--muted);
+  letter-spacing: 0.03em;
   min-height: 1.2em;
+  text-align: center;
 }
 
 .egg-art {
@@ -120,36 +113,36 @@ onUnmounted(() => {
   max-width: 100%;
   overflow-x: auto;
   font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
-  font-size: clamp(0.75rem, 2vw, 1rem);
+  font-size: clamp(0.68rem, 1.6vw, 0.88rem);
   line-height: 1.2;
-  letter-spacing: 0;
-  color: rgba(186, 199, 213, 0.78);
-  text-shadow: 0 0 18px rgba(125, 211, 252, 0.18);
+  color: #6a6a6a;
+  text-align: center;
   user-select: none;
   -webkit-overflow-scrolling: touch;
 }
 
 .egg-line {
   font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
-  font-size: clamp(0.8rem, 2vw, 0.95rem);
-  color: var(--gray);
+  font-size: clamp(0.78rem, 1.6vw, 0.9rem);
+  color: var(--ink);
   min-height: 1.4em;
+  text-align: center;
 }
 
 .egg-prompt {
-  color: var(--neon-magenta);
+  color: var(--accent);
   margin-right: 8px;
 }
 
 .egg-cursor {
   display: inline-block;
   margin-left: 2px;
-  color: var(--neon-cyan);
+  color: var(--accent);
   opacity: 0;
 }
 
 .egg-cursor.blink {
-  opacity: 0.85;
+  opacity: 0.7;
   animation: cursor-blink 1s steps(1) infinite;
 }
 
@@ -158,14 +151,14 @@ onUnmounted(() => {
 }
 
 @media (max-width: 480px) {
-  .easter-egg {
-    min-height: 50vh;
-    padding: 64px 12px 80px;
-    gap: 20px;
-  }
-
   .egg-art {
-    font-size: 0.65rem;
+    font-size: 0.6rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .egg-cursor.blink {
+    animation: none;
   }
 }
 </style>

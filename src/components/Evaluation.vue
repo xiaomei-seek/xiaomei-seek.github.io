@@ -1,92 +1,66 @@
 <template>
-  <section class="section" :id="id">
-    <div class="container">
-      <div class="section-title fade-in">
-        <h2>自我评价</h2>
-      </div>
-      <div class="evaluation-container fade-in">
-        <div class="evaluation-items">
-          <div v-for="(item, index) in evaluationItems" :key="index" class="evaluation-item">
-            <i class="fas fa-check-circle"></i>
-            <div class="evaluation-text">
-              <p>{{ item }}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+  <section class="pane">
+    <h2 class="pane-title">自我评价</h2>
+    <ul class="list">
+      <li v-for="(item, index) in evaluationItems" :key="index">
+        <span class="num">{{ String(index + 1).padStart(2, '0') }}</span>
+        <p>{{ item }}</p>
+      </li>
+    </ul>
   </section>
 </template>
 
 <script setup>
-import { defineProps } from 'vue';
-
-defineProps({
-  id: {
-    type: String,
-    default: 'evaluation'
-  }
-});
-
 const evaluationItems = [
   '全栈能力突出，能独立完成从需求分析到部署上线的全流程开发',
-  '对AI技术有深度实践，熟悉大模型应用开发',
+  '对 AI 技术有深度实践，熟悉大模型应用开发',
   '技术视野广阔，持续学习新技术并应用到实际项目中'
 ];
 </script>
 
 <style scoped>
-.evaluation-container {
-  background: var(--panel-bg);
-  border: 1px solid rgba(148, 163, 184, 0.18);
-  border-radius: var(--border-radius);
-  padding: 40px;
-  box-shadow: var(--box-shadow);
-  backdrop-filter: blur(10px);
-  position: relative;
-  overflow: hidden;
+.pane {
+  max-width: 640px;
 }
 
-.evaluation-container::before {
-  content: '';
-  position: absolute;
-  inset: 0 0 auto;
-  height: 3px;
-  background: var(--accent-line);
-  opacity: 0.75;
+.pane-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  margin-bottom: 28px;
 }
 
-.evaluation-items {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 30px;
-  margin-top: 20px;
-}
-
-.evaluation-item {
+.list {
+  list-style: none;
   display: flex;
-  align-items: flex-start;
+  flex-direction: column;
+  gap: 22px;
 }
 
-.evaluation-item i {
-  color: var(--neon-orange);
-  font-size: 24px;
-  margin-right: 15px;
-  margin-top: 5px;
-  filter: drop-shadow(0 0 8px rgba(245, 158, 11, 0.24));
+li {
+  display: grid;
+  grid-template-columns: 2.2rem 1fr;
+  gap: 14px;
+  align-items: start;
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--line);
 }
 
-.evaluation-text p {
-  color: var(--gray);
+li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
 }
 
-@media (max-width: 768px) {
-  .evaluation-items {
-    grid-template-columns: 1fr;
-  }
-  
-  .evaluation-container {
-    padding: 30px 20px;
-  }
+.num {
+  color: var(--muted);
+  font-size: 0.9rem;
+  padding-top: 3px;
+  font-variant-numeric: tabular-nums;
+}
+
+p {
+  color: #2a2a2a;
+  font-size: 1.05rem;
+  line-height: 1.75;
 }
 </style>

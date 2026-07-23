@@ -13,18 +13,18 @@
         <p class="tagline">前端为主，全栈落地。</p>
 
         <nav class="nav" aria-label="主导航">
-          <button
+          <RouterLink
             v-for="item in navItems"
-            :key="item.id"
-            type="button"
+            :key="item.name"
+            :to="item.to"
             class="nav-btn"
-            :class="{ active: activePane === item.id }"
-            @click="selectPane(item.id)"
+            :class="{ active: isActive(item) }"
+            @click="menuOpen = false"
           >
             <span class="nav-line" aria-hidden="true"></span>
             <span class="nav-label">{{ item.label }}</span>
             <span class="nav-en" aria-hidden="true">{{ item.en }}</span>
-          </button>
+          </RouterLink>
         </nav>
 
         <footer class="aside-foot">
@@ -50,71 +50,61 @@
     <div v-if="menuOpen" class="scrim" @click="menuOpen = false"></div>
 
     <main class="main">
-      <transition name="pane" mode="out-in">
-        <About v-if="activePane === 'about'" key="about" />
-        <Skills v-else-if="activePane === 'skills'" key="skills" />
-        <Projects v-else-if="activePane === 'projects'" key="projects" />
-        <Evaluation v-else-if="activePane === 'evaluation'" key="evaluation" />
-        <Contact v-else-if="activePane === 'contact'" key="contact" />
-      </transition>
+      <RouterView v-slot="{ Component, route }">
+        <transition name="pane" mode="out-in">
+          <component :is="Component" :key="route.fullPath" />
+        </transition>
+      </RouterView>
     </main>
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
+import { useRoute } from 'vue-router';
 import { createCursorTrail } from './utils/bubbleCursor.js';
-import About from './components/About.vue';
-import Skills from './components/Skills.vue';
-import Projects from './components/Projects.vue';
-import Evaluation from './components/Evaluation.vue';
-import Contact from './components/Contact.vue';
 
 // 鼠标特效切换：'bubble' 气泡 | 'image' 图片轨迹
 const CURSOR_TRAIL_MODE = 'bubble';
 
 const navItems = [
-  { id: 'about', label: '关于', en: 'About' },
-  { id: 'skills', label: '技能', en: 'Skills' },
-  { id: 'projects', label: '项目', en: 'Work' },
-  { id: 'evaluation', label: '评价', en: 'Words' },
-  { id: 'contact', label: '联系', en: 'Contact' }
+  { name: 'about', to: '/', label: '关于', en: 'About' },
+  { name: 'skills', to: '/skills', label: '技能', en: 'Skills' },
+  { name: 'projects', to: '/projects', label: '项目', en: 'Work' },
+  { name: 'contact', to: '/contact', label: '联系', en: 'Contact' }
 ];
 
-const activePane = ref('about');
+const route = useRoute();
 const menuOpen = ref(false);
 const year = new Date().getFullYear();
 let cursorTrail = null;
 
-function selectPane(id) {
-  activePane.value = id;
-  menuOpen.value = false;
-  if (id === 'projects' && !window.location.hash.startsWith('#projects')) {
-    history.replaceState(null, '', '#projects');
+function isActive(item) {
+  if (item.name === 'projects') {
+    return route.path.startsWith('/projects');
   }
+  if (item.name === 'about') {
+    return route.path === '/';
+  }
+  return route.path === item.to;
 }
 
 onMounted(() => {
-  const hash = window.location.hash;
-  if (hash.startsWith('#projects')) {
-    activePane.value = 'projects';
-  }
-
   cursorTrail = createCursorTrail(
     CURSOR_TRAIL_MODE === 'image'
       ? {
           mode: 'image',
-          imageSrc: '/images/tongluoshao.svg', // 也可换成 /images/xingxing.svg
-          size: 28, // 图片边长（px）
-          minDistance: 28, // 两次生成至少移动多少像素（越小越密）
-          maxParticles: 16, // 同时存在的粒子上限
-          spawnChance: 0.65 // 满足距离后生成概率 0~1（越大越密）
+          imageSrc: '/images/tongluoshao.svg',
+          size: 28,
+          minDistance: 28,
+          maxParticles: 16,
+          spawnChance: 0.65
         }
       : {
           mode: 'bubble',
-          minDistance: 6, // 两次生成至少移动多少像素（越小越密）
-          maxParticles: 28, // 同时存在的粒子上限
-          spawnChance: 0.75 // 满足距离后生成概率 0~1（越大越密）
+          minDistance: 6,
+          maxParticles: 28,
+          spawnChance: 0.75
         }
   );
 });
@@ -208,6 +198,7 @@ onUnmounted(() => {
   padding: 13px 4px;
   color: var(--muted);
   text-align: left;
+  text-decoration: none;
   transition: color 0.25s ease;
 }
 

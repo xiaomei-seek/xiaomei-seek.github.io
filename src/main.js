@@ -3,5 +3,6 @@ import 'lxgw-wenkai-webfont/lxgwwenkai-regular.css'
 import 'lxgw-wenkai-webfont/lxgwwenkai-bold.css'
 import './assets/styles/global.css'
 import App from './App.vue'
+import router from './router'
 
-createApp(App).mount('#app')
+createApp(App).use(router).mount('#app')

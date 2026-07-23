@@ -1,7 +1,7 @@
 <template>
   <section class="pane">
     <h2 class="pane-title">联系方式</h2>
-    <p class="intro">有机会聊聊项目或机会，欢迎联系。</p>
+    <p class="intro">欢迎联系，聊聊项目或机会。</p>
 
     <div class="rows">
       <div v-for="item in contacts" :key="item.label" class="row">

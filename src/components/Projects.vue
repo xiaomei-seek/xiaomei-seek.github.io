@@ -1,11 +1,5 @@
 <template>
-  <ProjectDetail
-    v-if="activeProject"
-    :project="activeProject"
-    @back="closeDetail"
-  />
-
-  <section v-else class="pane">
+  <section class="pane">
     <h2 class="pane-title">项目经验</h2>
     <p class="intro">简历精选 {{ featuredProjects.length }} 项，点击进入详情。</p>
 
@@ -52,54 +46,14 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onUnmounted } from 'vue';
-import ProjectDetail from './ProjectDetail.vue';
-import { featuredProjects, moreProjects, getProjectById } from '../data/projects.js';
+import { useRouter } from 'vue-router';
+import { featuredProjects, moreProjects } from '../data/projects.js';
 
-const activeId = ref(null);
-
-const activeProject = computed(() =>
-  activeId.value ? getProjectById(activeId.value) : null
-);
+const router = useRouter();
 
 function openDetail(id) {
-  activeId.value = id;
-  syncHash(id);
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  router.push({ name: 'project-detail', params: { id } });
 }
-
-function closeDetail() {
-  activeId.value = null;
-  syncHash(null);
-}
-
-function syncHash(id) {
-  const base = '#projects';
-  const next = id ? `${base}/${id}` : base;
-  if (window.location.hash !== next) {
-    history.replaceState(null, '', next);
-  }
-}
-
-function readHash() {
-  const match = window.location.hash.match(/^#projects\/([a-z0-9-]+)$/);
-  if (match && getProjectById(match[1])) {
-    activeId.value = match[1];
-    return;
-  }
-  if (!window.location.hash.startsWith('#projects/')) {
-    activeId.value = null;
-  }
-}
-
-onMounted(() => {
-  readHash();
-  window.addEventListener('hashchange', readHash);
-});
-
-onUnmounted(() => {
-  window.removeEventListener('hashchange', readHash);
-});
 </script>
 
 <style scoped>

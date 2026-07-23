@@ -14,6 +14,16 @@
         <dd>{{ item.value }}</dd>
       </div>
     </dl>
+
+    <div class="eval">
+      <h3 class="eval-title">自我评价</h3>
+      <ul class="eval-list">
+        <li v-for="(item, index) in evaluationItems" :key="index">
+          <span class="num">{{ String(index + 1).padStart(2, '0') }}</span>
+          <p>{{ item }}</p>
+        </li>
+      </ul>
+    </div>
   </section>
 </template>
 
@@ -25,6 +35,12 @@ const meta = [
   { label: '经验', value: '3 年' },
   { label: '邮箱', value: '18737582236@163.com' },
   { label: '电话 / 微信', value: '187 3758 2236' }
+];
+
+const evaluationItems = [
+  '全栈能力突出，能独立完成从需求分析到部署上线的全流程开发',
+  '对 AI 技术有深度实践，熟悉大模型应用开发',
+  '技术视野广阔，持续学习新技术并应用到实际项目中'
 ];
 </script>
 
@@ -71,6 +87,47 @@ p {
 .meta-item dd {
   font-size: 1.02rem;
   font-weight: 500;
+}
+
+.eval {
+  margin-top: 40px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+
+.eval-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  margin-bottom: 20px;
+}
+
+.eval-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.eval-list li {
+  display: grid;
+  grid-template-columns: 2.2rem 1fr;
+  gap: 12px;
+  align-items: start;
+}
+
+.num {
+  color: var(--muted);
+  font-size: 0.88rem;
+  padding-top: 3px;
+  font-variant-numeric: tabular-nums;
+}
+
+.eval-list p {
+  margin: 0;
+  color: #2a2a2a;
+  font-size: 1.02rem;
+  line-height: 1.75;
 }
 
 @media (max-width: 560px) {

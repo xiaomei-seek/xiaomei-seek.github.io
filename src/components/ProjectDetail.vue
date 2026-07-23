@@ -1,6 +1,6 @@
 <template>
-  <section class="detail">
-    <button type="button" class="back" @click="$emit('back')">← 返回项目列表</button>
+  <section v-if="project" class="detail">
+    <button type="button" class="back" @click="goBack">← 返回项目列表</button>
 
     <header class="head">
       <p class="period">{{ project.period }}</p>
@@ -51,31 +51,41 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed, watch } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 import VueEasyLightbox from 'vue-easy-lightbox';
+import { getProjectById } from '../data/projects.js';
 
-const props = defineProps({
-  project: {
-    type: Object,
-    required: true
-  }
-});
+const route = useRoute();
+const router = useRouter();
 
-defineEmits(['back']);
+const project = computed(() => getProjectById(route.params.id));
+
+watch(
+  project,
+  (value) => {
+    if (!value) router.replace({ name: 'projects' });
+  },
+  { immediate: true }
+);
 
 const lightboxVisible = ref(false);
 const lightboxIndex = ref(0);
 
 const lightboxImgs = computed(() =>
-  (props.project.images ?? []).map((src, i) => ({
+  (project.value?.images ?? []).map((src, i) => ({
     src,
-    title: props.project.imageDescriptions?.[i] || props.project.title
+    title: project.value.imageDescriptions?.[i] || project.value.title
   }))
 );
 
 function openGallery(index) {
   lightboxIndex.value = index;
   lightboxVisible.value = true;
+}
+
+function goBack() {
+  router.push({ name: 'projects' });
 }
 </script>
 
